@@ -204,10 +204,13 @@ bar
     colors{
         background #232323
         statusline #DCDCDC
+        separator "#AAAAAA"
     }
     #mode hide
     binding_mode_indicator yes
+    #separator_symbol ":|:"
 }
+
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  scratchpad (minimize window)                                    |
@@ -239,3 +242,4 @@ bindsym $mod+q       exec sensible-browser
 bindsym $mod+t       exec thunderbird
 bindsym $mod+Return  exec i3-sensible-terminal
 bindsym $mod+d       exec dmenu_run
+
