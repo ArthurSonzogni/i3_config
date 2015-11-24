@@ -86,7 +86,7 @@ bindsym   $mod+minus       workspace   6
 bindsym   $mod+egrave      workspace   7
 bindsym   $mod+underscore  workspace   8
 bindsym   $mod+ccedilla    workspace   9
-bindsym   $mod+agrave      ;workspace   10
+bindsym   $mod+agrave      workspace   10
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Move windows to workspace                                       │
@@ -140,7 +140,8 @@ bindsym $mod+r mode "resize"
 
 
 hide_edge_borders vertical
-new_window 1pixel
+#new_window 1pixel
+#border pixel 10
 
 client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
 client.focused_inactive #333333 #5F676A #ffffff #484e50
