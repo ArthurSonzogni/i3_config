@@ -5,5 +5,5 @@ It is put on github to avoid retyping it many times and share changements across
 
 # Installation :
 ```
-git clone git@github.com:ArthurSonzogni/i3_config.git ~/.i3
+git clone git@github.com:ArthurSonzogni/i3_config.git ~/.config/i3
 ```
