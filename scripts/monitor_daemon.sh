@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# Terminate any previously running instances of the subscriber loop
-pkill -f "i3-msg -t subscribe -m \\[\"output\"\\]"
+# Terminate other instances of this script, excluding the current process ID
+for pid in $(pgrep -f "monitor_daemon.sh"); do
+    if [ "$pid" != "$$" ]; then
+        kill "$pid" 2>/dev/null
+    fi
+done
 
 # Start a continuous listener for monitor/output events from i3
 stdbuf -oL i3-msg -t subscribe -m '["output"]' | while read -r event; do
