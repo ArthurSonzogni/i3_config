@@ -38,6 +38,12 @@ fi
 echo "Setting permissions for scripts..."
 chmod +x "$HOME/.config/i3/scripts/"*.sh
 
+echo "Configuring Kitty transparency..."
+if [ -f "$HOME/.config/kitty/kitty.conf" ]; then
+    sed -i 's/^# background_opacity 1.0/background_opacity 0.80/' "$HOME/.config/kitty/kitty.conf"
+    sed -i 's/^# dynamic_background_opacity no/dynamic_background_opacity yes/' "$HOME/.config/kitty/kitty.conf"
+fi
+
 echo "---------------------------------------------------"
 echo "Setup complete!"
 echo "You can now reload i3 (Mod+Shift+r) or log in again."
