@@ -21,7 +21,9 @@ sudo apt-get install -y \
     diodon \
     curl \
     pango1.0-tools \
-    fonts-ubuntu
+    fonts-ubuntu \
+    fonts-font-awesome \
+    fonts-noto-color-emoji
 
 echo "Creating wallpaper directory..."
 mkdir -p "$HOME/.config/i3/wallpapers"
