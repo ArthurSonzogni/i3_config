@@ -10,6 +10,7 @@ echo "Installing i3 and core dependencies..."
 sudo apt-get install -y \
     i3 \
     i3status \
+    polybar \
     feh \
     picom \
     jq \
