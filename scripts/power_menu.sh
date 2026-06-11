@@ -10,7 +10,7 @@ SHUTDOWN="🔌 Shutdown"
 options="$LOCK\n$LOGOUT\n$SUSPEND\n$REBOOT\n$SHUTDOWN"
 
 # Show rofi menu
-chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power Menu" -theme-str 'window {width: 15%;}')
+chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power Menu" -theme ~/.config/i3/rofi/theme.rasi -theme-str 'window {width: 15%;} listview {lines: 5;}')
 
 case "$chosen" in
     "$LOCK")

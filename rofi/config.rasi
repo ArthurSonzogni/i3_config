@@ -1,0 +1,86 @@
+configuration {
+    modi: "run,drun,window";
+    icon-theme: "Papirus";
+    show-icons: true;
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 﩯  Window";
+    display-Network: " 󰤨  Network";
+    sidebar-mode: true;
+}
+
+* {
+    /* Colors */
+    bg:          #232323;
+    bg-alt:      #373B41;
+    fg:          #C5C8C6;
+    primary:     #3F8AC2;
+    alert:       #A54242;
+    
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "Ubuntu Mono 12";
+}
+
+window {
+    background-color: @bg;
+    border:           2px;
+    border-color:     @primary;
+    width:            30%;
+    padding:          20px;
+    anchor:           center;
+    location:         center;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing:  15px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    background-color: @bg-alt;
+    padding:  8px;
+    border-radius: 4px;
+}
+
+prompt {
+    padding: 0px 10px 0px 5px;
+    text-color: @primary;
+}
+
+entry {
+    placeholder: "Search...";
+    placeholder-color: #707880;
+}
+
+listview {
+    lines:        10;
+    scrollbar:    false;
+    spacing:      5px;
+    fixed-height: false;
+}
+
+element {
+    padding:       8px;
+    border-radius: 4px;
+}
+
+element selected {
+    background-color: @primary;
+    text-color:       @bg;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+element-icon {
+    size: 24px;
+    padding: 0 10px 0 0;
+}
