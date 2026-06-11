@@ -34,9 +34,18 @@ send_notification() {
         local vol=$(get_volume $tool)
 
         if [ -n "$mute" ]; then
-            notify-send -h string:x-canonical-private-synchronous:volume -t 1000 "Volume" "Muted"
+            notify-send -h string:x-canonical-private-synchronous:volume \
+                        -h int:value:0 \
+                        -t 1000 "Volume" "Muted" -i audio-volume-muted
         elif [ -n "$vol" ]; then
-            notify-send -h string:x-canonical-private-synchronous:volume -t 1000 "Volume" "${vol}%"
+            local icon="audio-volume-high"
+            if [ "$vol" -lt 33 ]; then icon="audio-volume-low"
+            elif [ "$vol" -lt 66 ]; then icon="audio-volume-medium"
+            fi
+            
+            notify-send -h string:x-canonical-private-synchronous:volume \
+                        -h int:value:"$vol" \
+                        -t 1000 "Volume" "${vol}%" -i "$icon"
         fi
     fi
 }

@@ -19,7 +19,9 @@ get_brightness() {
 send_notification() {
     local val=$1
     if [ -n "$val" ] && command -v notify-send >/dev/null 2>&1; then
-        notify-send -h string:x-canonical-private-synchronous:brightness -t 1000 "Brightness" "${val}%"
+        notify-send -h string:x-canonical-private-synchronous:brightness \
+                    -h int:value:"$val" \
+                    -t 1000 "Brightness" "${val}%" -i display-brightness
     fi
 }
 
