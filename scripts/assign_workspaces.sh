@@ -25,7 +25,7 @@ if [ "$NUM_OUTPUTS" -eq 3 ]; then
 
     echo "3 screens detected. Top Left: $TOP_LEFT, Top Right: $TOP_RIGHT, Bottom: $BOTTOM"
 
-    cat << EOF > "$CONF_FILE"
+    NEW_CONF=$(cat << EOF
 # Generated dynamically by assign_workspaces.sh
 workspace 1 output $TOP_LEFT
 workspace 2 output $TOP_LEFT
@@ -38,9 +38,13 @@ workspace 9 output $TOP_RIGHT
 workspace 5 output $BOTTOM
 workspace 10 output $BOTTOM
 EOF
+)
 
-    # Reload i3 configuration to apply the new assignments
-    i3-msg reload
+    if [ ! -f "$CONF_FILE" ] || [ "$NEW_CONF" != "$(cat "$CONF_FILE")" ]; then
+        echo "$NEW_CONF" > "$CONF_FILE"
+        # Reload i3 configuration to apply the new assignments
+        i3-msg reload
+    fi
 
     # Move any already created workspaces to their designated monitors
     i3-msg "[workspace=1] move workspace to output $TOP_LEFT" >/dev/null 2>&1 || true
@@ -65,14 +69,18 @@ else
 
     echo "Not 3 screens ($NUM_OUTPUTS). Fallback to assigning 1-3 to $TOP_LEFT"
 
-    cat << EOF > "$CONF_FILE"
+    NEW_CONF=$(cat << EOF
 # Generated dynamically by assign_workspaces.sh
 workspace 1 output $TOP_LEFT
 workspace 2 output $TOP_LEFT
 workspace 3 output $TOP_LEFT
 EOF
-    # Reload i3 configuration to apply the new assignments
-    i3-msg reload
+)
+    if [ ! -f "$CONF_FILE" ] || [ "$NEW_CONF" != "$(cat "$CONF_FILE")" ]; then
+        echo "$NEW_CONF" > "$CONF_FILE"
+        # Reload i3 configuration to apply the new assignments
+        i3-msg reload
+    fi
 
     # Move any already created workspaces 1, 2, 3 to the top-left monitor
     i3-msg "[workspace=1] move workspace to output $TOP_LEFT" >/dev/null 2>&1 || true
